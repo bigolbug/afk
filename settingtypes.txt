@@ -1,0 +1,5 @@
+# AFK Prevention Settings
+afk.place_count (Number of block placements allowed before triggering AFK check) int 15
+afk.place_period (Time period (in seconds) to evaluate block placements) int 30
+afk.ban_period (Time period (in seconds) to block a player) int 600
+
