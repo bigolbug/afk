@@ -64,7 +64,7 @@ core.register_on_joinplayer(function(ObjectRef, last_login)
         local now = os.time()
         if now - banned_players[player_name] < afk.ban_period then
             local minutes_remaining = math.floor((afk.ban_period - (now - banned_players[player_name]))/60)
-            core.after(1,afk.kick_player(player_name,minutes_remaining))
+            core.after(1,afk.kick_player,player_name)
         else
             banned_players[player_name] = nil
             afk.metadata:set_string("banned",core.serialize(banned_players))
@@ -90,6 +90,6 @@ afk.is_enabled = function()
     end
 end
 
-function afk.kick_player(player,minutes_remaining) 
-    core.kick_player(player, "You have been banned for AFK, try connecting in ".. minutes_remaining + 1 .. " minutes")
+function afk.kick_player(player) 
+    core.kick_player(player, "You have been banned for AFK, try connecting in a few minutes")
 end
